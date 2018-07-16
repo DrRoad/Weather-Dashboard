@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1531729027269.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "207|38|236|4|\n239|37|274|4|\n",
+    "hash" : "0",
+    "id" : "2D85AC23",
+    "lastKnownWriteTime" : 1531730425,
+    "last_content_update" : 1531730425581,
+    "path" : "~/Weather2.0/weather_dashboard_App.R",
+    "project_path" : "weather_dashboard_App.R",
+    "properties" : {
+        "cursorPosition" : "194,6",
+        "scrollLine" : "172"
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

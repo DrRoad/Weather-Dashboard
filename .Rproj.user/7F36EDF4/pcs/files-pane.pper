@@ -1,0 +1,9 @@
+{
+    "path" : "~/Weather2.0",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
