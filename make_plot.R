@@ -14,6 +14,10 @@ make_plot <- function(tibbles,x_col,y_col,names,line = FALSE, point = TRUE, titl
   print(end)
   plot <- ggplot()
   
+  X <- c()
+  Y <- c()
+  groups <- c()
+  
   if(length(tibbles) > 0){
     for(i in seq(1,length(tibbles))){
       if(colnames(tibbles[[i]])[colnames(tibbles[[i]]) == x_col] == 'date'){
@@ -27,22 +31,26 @@ make_plot <- function(tibbles,x_col,y_col,names,line = FALSE, point = TRUE, titl
       }else{
         colnames(tibbles[[i]])[colnames(tibbles[[i]]) == y_col] <- 'Y' 
       }
-
-      #check if the selected column is a date time stamp, if it is just pass in a sequence of numbers
-      if(colnames(tibbles[[i]])[colnames(tibbles[[i]]) == x_col] == 'date'){
-        
-      }
-      
-      if(point){
-        plot <- plot + geom_point(data = tibbles[[i]][start:end,], mapping = aes(x=X,y=Y,colour = colors[1])) 
-      }
-      if(line){
-        plot <- plot + geom_line(data = tibbles[[i]][start:end,], mapping = aes(x=X,y=Y,colour = colors[1]))
-      }
+      #merge the relevant data together
+      X <- c(X,as.numeric(unlist(tibbles[[i]]$X)))
+      Y <- c(Y,as.numeric(unlist(tibbles[[i]]$Y)))
+      groups <- c(groups,replicate(nrow(tibbles[[i]]),names[i]))
     }
+    
+    df <- tibble(X,Y,groups)
+    
+    plot <- ggplot(data = df, aes(x=X,y=Y,colour=groups))
+    
+    if(line){
+      plot <- plot + geom_line()
+    }
+    if(point){
+      plot <- plot + geom_point()
+    }
+    
     print(names[1:length(tibbles)])
     print(colors[1:length(tibbles)])
-    plot <- plot + scale_color_manual(labels = names[1:length(tibbles)], values = colors[1:length(tibbles)]) +
+    plot <- plot + 
       labs(title = title, x = x_lab, y = y_lab, color = "")
   }
   plot
