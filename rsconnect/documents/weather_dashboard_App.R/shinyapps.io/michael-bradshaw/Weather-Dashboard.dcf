@@ -1,0 +1,13 @@
+name: Weather-Dashboard
+title: Weather-Dashboard
+username:
+account: michael-bradshaw
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 397419
+bundleId: 1525598
+url: https://michael-bradshaw.shinyapps.io/Weather-Dashboard/
+when: 1533769392.20621
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: ~$search Log.docx|Research Log.docx
