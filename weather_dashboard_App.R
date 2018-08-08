@@ -59,6 +59,9 @@ shinyApp(
     globals$filenames <- c()
     #the most recent plot generated
     globals$most_recent_plot <- NULL
+    
+    #this mostly only used for the previewing data section, but it has a function, clean_file_names, which is needed before then
+    source('combind_tibbles.R')
     #---------------------------------------------------------------------------------------------------------------------------
     #-----------------------------------------------FILE UPLOAD TAB CODE--------------------------------------------------------
     #---------------------------------------------------------------------------------------------------------------------------
@@ -90,6 +93,7 @@ shinyApp(
         temp_names <- colnames(file)
         temp_names[1] <- 'date'
         colnames(file) <- temp_names
+        file <- clean_file_names(file)
         files[[index]] <- file
         index = index + 1
       }
@@ -116,7 +120,6 @@ shinyApp(
     #---------------------------------------------------------------------------------------------------------------------------
     #-------------------------------------------PREVEIW DATA TAB---------------------------------------------------------------
     #---------------------------------------------------------------------------------------------------------------------------
-    source('combind_tibbles.R')
     source('average_time_frames.R')
     #reatuve values used just for the preview tab
     preview_values <- reactiveValues()
