@@ -5,9 +5,9 @@ account: michael-bradshaw
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 397419
-bundleId: 1525598
+bundleId: 1525826
 url: https://michael-bradshaw.shinyapps.io/Weather-Dashboard/
-when: 1533769392.20621
+when: 1533790426.20458
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: ~$search Log.docx|Research Log.docx
+ignoredFiles: ~$ather_dashboard_user_guide.docx|~$search Log.docx|Research Log.docx|weather_dashboard_user_guide.docx

@@ -9,14 +9,25 @@ make_plot <- function(tibbles,x_col,y_col,names,line = FALSE, point = TRUE, titl
     start <- range[1]
     end <- range[2]
   }
-  print('----')
-  print(start)
-  print(end)
   plot <- ggplot()
+  
+  #limit the x axis range if x_col is date
+  if(x_col == 'date') {
+    for(i in seq(1,length(tibbles))){
+      tibbles[[i]] <- tibbles[[i]][start:end,]
+    }
+  }
   
   X <- c()
   Y <- c()
   groups <- c()
+  
+  #color blind friendly color schemes
+  cbPalette <- c( "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7", "#999999", "#E69F00")
+  # To use for fills, add
+  scale_fill_manual(values=cbPalette)
+  # To use for line and point colors, add
+  scale_colour_manual(values=cbPalette)
   
   if(length(tibbles) > 0){
     for(i in seq(1,length(tibbles))){
@@ -53,5 +64,5 @@ make_plot <- function(tibbles,x_col,y_col,names,line = FALSE, point = TRUE, titl
     plot <- plot + 
       labs(title = title, x = x_lab, y = y_lab, color = "")
   }
-  plot
+  plot + theme_bw() + scale_colour_manual(values=cbPalette) + scale_fill_manual(values=cbPalette)
 }

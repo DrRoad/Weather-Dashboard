@@ -19,8 +19,6 @@ clean_file_names <- function(file){
 #returns list of tibbles
 sanitize_files <- function(tibbles){
   for(i in seq(1,length(tibbles))){
-    print('cleaning')
-    print(i)
     tibbles[[i]] <- clean_file_names(tibbles[[i]])
   }
   #replace all of the ***

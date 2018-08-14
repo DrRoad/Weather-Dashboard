@@ -18,7 +18,6 @@ average_time_frames <- function(data,time_frame){
       sub('\\d+:.*','',row)
     })
   }else if(time_frame %in% 'month'){
-    print('MONTH')
     data[,1] <- apply(data[,1],1,function(row){
       part <- sub('\\d+:.*','',row)
       part <- as.character(part)

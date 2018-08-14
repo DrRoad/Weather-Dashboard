@@ -8,6 +8,7 @@ shinyApp(
   ui =    bootstrapPage(
     
     tags$head(tags$script(src="scrolling-overload.js")),
+    tags$head(tags$link(rel="shortcut icon", href="/wd_cloud_90Z_icon.ico")),
     includeCSS("www/style.css"),
     navbarPage("Weather Dashboard",
                      tabPanel("Load Files",
