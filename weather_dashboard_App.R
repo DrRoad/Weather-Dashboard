@@ -125,25 +125,22 @@ shinyApp(
     #reatuve values used just for the preview tab
     preview_values <- reactiveValues()
     preview_values$col <- 0
-    preview_values$clicked <- FALSE
-    
+
     #generate the preview file selection area using the globals$filedisplayTibble generated in the file upload tab
     output$preview_file_selection_area = DT::renderDataTable(globals$filedisplayTibble[,c(2,3)], options = list(sDom  = '<"top">lrt<"bottom">ip'), editable=FALSE,selection = 'single')
     
     #dumby function for keeping track of the selected column
     output$text <- renderText({
       preview_values$col <- input$col
-      preview_values$clicked <- TRUE
       return('')
     })
     
     #observe the click event of the rename_button
     #if clicked and not a repeat event the selected column is renamed to what is currently in the colname textInput area
     observeEvent(input$rename_button,{
-      if(input$rename_button > 0 && preview_values$clicked) {
+      if(input$rename_button > 0) {
         col <- preview_values$col + 1
         colnames(globals$files[[as.numeric(input$preview_file_selection_area_rows_selected)]])[col] <- input$colname
-        preview_values$clicked <- FALSE
         globals$files[[as.numeric(input$preview_file_selection_area_rows_selected)]] 
       }else{
         globals$files[[as.numeric(input$preview_file_selection_area_rows_selected)]]
